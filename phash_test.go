@@ -11,8 +11,8 @@ var hashTestData = []struct {
 	{"test_data/gif/zebras.gif", 7086864532766789979},
 	{"test_data/jpg/zebras.jpg", 7086864532766789979},
 	{"test_data/png/zebras.png", 7086864532766789979},
-	{"test_data/png/grass.png", 0},
-	{"test_data/gif/animated_zebras.gif", 0},
+	{"test_data/png/grass.png", 54086765383280},
+	{"test_data/gif/animated_zebras.gif", 7086864532766789979},
 }
 
 func BenchmarkImageHash(b *testing.B) {
