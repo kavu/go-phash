@@ -1,7 +1,6 @@
 package phash
 
 /*
-#cgo LDFLAGS: -lstdc++
 #cgo pkg-config: pHash
 
 #include <stdlib.h>
@@ -20,6 +19,7 @@ import "C"
 
 import "unsafe"
 
+// Get a pHash for image with a given path.
 func ImageHash(file string) (uint64, error) {
 	cs := C.CString(file)
 

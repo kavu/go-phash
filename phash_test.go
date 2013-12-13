@@ -1,6 +1,9 @@
 package phash
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 var hashTestData = []struct {
 	file     string
@@ -35,4 +38,13 @@ func TestImageHash(t *testing.T) {
 			t.Errorf("%s: Hash Mismatch: expected %d, got %d", test.file, test.expected, hash)
 		}
 	}
+}
+
+func ExampleImageHash() {
+	hash, err := ImageHash("test_data/jpg/cat.jpg")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(hash)
+	// Output: 11220389026139797626
 }
