@@ -42,7 +42,7 @@ func TestImageHash(t *testing.T) {
 	}
 }
 
-func ExampleImageHash() {
+func ExampleImageHashDCT() {
 	hash, err := ImageHashDCT("test_data/jpg/cat.jpg")
 	if err != nil {
 		panic(err)
