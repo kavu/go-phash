@@ -16,7 +16,7 @@ package main
 import "github.com/kavu/go-phash"
 
 func main() {
-	hash, _ := phash.ImageHash("~/my_cat.jpg")
+	hash, _ := phash.ImageHashDCT("~/my_cat.jpg")
 	println(hash)
 }
 ```

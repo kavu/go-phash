@@ -12,26 +12,43 @@ package phash
 
 #include <stdlib.h>
 
-#if defined( _MSC_VER) || defined(_BORLANDC_)
-  typedef unsigned _uint64 ulong64;
-  typedef signed _int64 long64;
-#else
-  typedef unsigned long long ulong64;
-  typedef signed long long long64;
-#endif
+typedef unsigned long long ulong64;
 
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
+extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
 */
 import "C"
 
 import "unsafe"
 
-// ImageHash gets a pHash for image with a given path.
-func ImageHash(file string) (uint64, error) {
+// ImageHash returns a DCT pHash for image with a given path.
+func ImageHashDCT(file string) (uint64, error) {
 	cs := C.CString(file)
 
 	h, err := C.pc_dct_imagehash_Wrapper(cs)
 	C.free(unsafe.Pointer(cs))
 
 	return uint64(h), err
+}
+
+// HammingDistanceForHashes returns a Hamming Distance between two images' DCT pHashes.
+func HammingDistanceForHashes(hasha uint64, hashb uint64) (int, error) {
+	d, err := C.ph_hamming_distance(C.ulong64(hasha), C.ulong64(hashb))
+
+	return int(d), err
+}
+
+// HammingDistanceForFiles returns a Hamming Distance between two images with a given paths.
+func HammingDistanceForFiles(filea string, fileb string) (interface{}, error) {
+	hasha, err := ImageHashDCT(filea)
+	if err != nil {
+		return nil, err
+	}
+
+	hashb, err := ImageHashDCT(fileb)
+	if err != nil {
+		return nil, err
+	}
+
+	return HammingDistanceForHashes(hasha, hashb)
 }
