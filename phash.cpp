@@ -31,8 +31,8 @@ ulong64* pc_dct_videohash_Wrapper(const char *file) {
     printf("%s\n", "1");
     printf("%i\n", length);
     
-    for (int i = 0; i < length; i++) 
-        printf("%llu\n", *(h+i));
+    // for (int i = 0; i < length; i++) 
+        printf("%llu\n", *(h));
     
     return h;
 }
