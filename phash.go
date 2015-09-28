@@ -49,7 +49,7 @@ func VideoHashDCT(file string, file2 string) (error) {
 	println(*h1, len1)
 	
 	d, err := C.ph_dct_videohash_dist(h, len, h1, len1, 21)
-	println(double(d))
+	println(float64(d))
 	
 	return err
 }
