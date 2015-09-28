@@ -32,7 +32,7 @@ ulong64* pc_dct_videohash_Wrapper(const char *file) {
     printf("%i\n", length);
     
     for (int i = length - 1; i >= 0; i--) 
-        std::cout << h[i];
+        std::cout << *h;
     
     return h;
 }
