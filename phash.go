@@ -35,8 +35,9 @@ func ImageHashDCT(file string) (uint64, error) {
 func VideoHashDCT(file string) (error) {
 	cs := C.CString(file)
 
-	_, err := C.pc_dct_videohash_Wrapper(cs)
+	h, err := C.pc_dct_videohash_Wrapper(cs)
 	C.free(unsafe.Pointer(cs))
+	println(h)
 
 	return err
 }
