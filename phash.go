@@ -41,7 +41,7 @@ func VideoHashDCT(file string) (error) {
 	println(*h, len)
 	
 	for i := 0; i < len; i++ {
-	    println(*h[i])
+	    println((*h)[i])
 	}
 
 	return err
