@@ -24,7 +24,7 @@ int pc_dct_videohash_Wrapper(const char *file) {
     cimg::exception_mode(0);
     int length;
 
-    ph_dct_videohash(file, length);
+    ulong64* t = ph_dct_videohash(file, length);
     errno = 0;
 
     return length;
