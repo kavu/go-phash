@@ -24,16 +24,15 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
 ulong64* pc_dct_videohash_Wrapper(const char *file) {
     cimg::exception_mode(0);
     int length = 0;
-    printf("%i\n", length);
+    printf("lehgth before: %i\n", length);
 
     ulong64* h = ph_dct_videohash(file, length); 
     errno = 0;
     
-    printf("%s\n", "1");
-    printf("%i\n", length);
+    printf("length after: %i\n", length);
     
     // for (int i = 0; i < length; i++) 
-        printf("%p\n", ph_dct_videohash(file, length));
+    printf("pointer: %p\n", ph_dct_videohash(file, length));
     
     return h;
 }
