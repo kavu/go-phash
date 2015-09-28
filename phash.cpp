@@ -30,7 +30,7 @@ ulong64* pc_dct_videohash_Wrapper(const char *file) {
     
     printf("%s\n", "1");
     printf("%i\n", length);
-    std::cout<<h == NULL;
+    std::cout<<(h == NULL);
     
     for (int i = 0; i < length; i++) 
         printf("%i\n", *(h+i));
