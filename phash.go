@@ -15,7 +15,7 @@ package phash
 typedef unsigned long long ulong64;
 
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
-extern int pc_dct_videohash_Wrapper(const char *file);
+extern ulong64* pc_dct_videohash_Wrapper(const char *file);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
 */
 import "C"
