@@ -38,7 +38,7 @@ func VideoHashDCT(file string) (uint64, error) {
 	h, err := C.pc_dct_videohash_Wrapper(cs)
 	C.free(unsafe.Pointer(cs))
 
-	return uint64(h), err
+	return uint64(*h), err
 }
 
 // HammingDistanceForHashes returns a Hamming Distance between two images' DCT pHashes.
