@@ -17,7 +17,7 @@ typedef unsigned long long ulong64;
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
 extern ulong64* pc_dct_videohash_Wrapper(const char *file, int *length);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
-extern double pc_dct_videohash_dist_Wrapper(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
+extern double pc_dct_videohash_dist(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
 */
 import "C"
 
@@ -33,7 +33,7 @@ func ImageHashDCT(file string) (uint64, error) {
 	return uint64(h), err
 }
 
-func VideoHashDCT(file string) (error) {
+func VideoHashDCT(file string, file2 string) (error) {
 	cs := C.CString(file)
 	len := C.int(0)
 
@@ -41,10 +41,14 @@ func VideoHashDCT(file string) (error) {
 	C.free(unsafe.Pointer(cs))
 	println(*h, len)
 	
-	for i := 0; i < len; i++ {
-	    println((*h)[i])
-	}
+	cs1 := C.CString(file)
+	len1 := C.int(0)
 
+	h1, err := C.pc_dct_videohash_Wrapper(cs1, (*C.int)(unsafe.Pointer(&len1)))
+	C.free(unsafe.Pointer(cs1))
+	println(*h1, len1)
+	
+	
 	return err
 }
 
