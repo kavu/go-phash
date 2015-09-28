@@ -21,7 +21,7 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
     return hash;
 }
 
-ulong64* pc_dct_videohash_Wrapper(const char *file, int &Length) {
+ulong64* pc_dct_videohash_Wrapper(const char *file, int *length) {
     cimg::exception_mode(0);
     
     printf("length before: %i\n", length);
