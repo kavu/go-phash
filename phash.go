@@ -17,6 +17,7 @@ typedef unsigned long long ulong64;
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
 extern ulong64* pc_dct_videohash_Wrapper(const char *file, int *length);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
+extern double pc_dct_videohash_dist_Wrapper(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
 */
 import "C"
 
