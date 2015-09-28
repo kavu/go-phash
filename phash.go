@@ -48,6 +48,7 @@ func VideoHashDCT(file string, file2 string) (error) {
 	C.free(unsafe.Pointer(cs1))
 	println(*h1, len1)
 	
+	C.pc_dct_videohash_dist(h, len, h1, len1, 21)
 	
 	return err
 }
