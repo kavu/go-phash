@@ -29,7 +29,7 @@ func ImageHashDCT(file string) (uint64, error) {
 	h, err := C.pc_dct_imagehash_Wrapper(cs)
 	C.free(unsafe.Pointer(cs))
 
-	return uint64(h), err
+	return uint64(*h), err
 }
 
 func VideoHashDCT(file string) (uint64, error) {
