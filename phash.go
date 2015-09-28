@@ -15,7 +15,7 @@ package phash
 typedef unsigned long long ulong64;
 
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
-extern ulong64* pc_dct_videohash_Wrapper(const char *file, int &Length);
+extern ulong64* pc_dct_videohash_Wrapper(const char *file, int *length);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
 */
 import "C"
@@ -36,7 +36,7 @@ func VideoHashDCT(file string) (error) {
 	cs := C.CString(file)
 	len := C.int(0)
 
-	h, err := C.pc_dct_videohash_Wrapper(cs, *len)
+	h, err := C.pc_dct_videohash_Wrapper(cs, len)
 	C.free(unsafe.Pointer(cs))
 	println(*h, len)
 
