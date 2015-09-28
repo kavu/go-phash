@@ -20,6 +20,16 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
     return hash;
 }
 
+int pc_dct_videohash_Wrapper(const char *file) {
+    cimg::exception_mode(0);
+    int length;
+
+    if (ph_dct_videohash(file, length) == 0)
+        errno = 0;
+
+    return length;
+}
+
 #ifdef __cplusplus
 }
 #endif
