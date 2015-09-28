@@ -27,8 +27,10 @@ ulong64* pc_dct_videohash_Wrapper(const char *file) {
 
     ulong64* h = ph_dct_videohash(file, length); 
     errno = 0;
-    std::cout << "1";
-    std::cout << length;
+    
+    printf("%s\n", "1");
+    printf("%i\n", length);
+    
     for (int i = length - 1; i >= 0; i--) 
         std::cout << "1";
     
