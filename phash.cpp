@@ -23,6 +23,7 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
 
 ulong64* pc_dct_videohash_Wrapper(const char *file) {
     cimg::exception_mode(0);
+    printf("%i\n", length);
     int length;
 
     ulong64* h = ph_dct_videohash(file, length); 
