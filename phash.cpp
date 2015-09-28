@@ -27,7 +27,7 @@ int pc_dct_videohash_Wrapper(const char *file) {
     ph_dct_videohash(file, length);
     errno = 0;
 
-    return 0;
+    return length;
 }
 
 #ifdef __cplusplus
