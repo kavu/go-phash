@@ -11,6 +11,7 @@ package phash
 #cgo pkg-config: pHash
 
 #include <stdlib.h>
+#include <pHash.h>
 
 typedef unsigned long long ulong64;
 
