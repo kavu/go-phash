@@ -11,14 +11,13 @@ package phash
 #cgo pkg-config: pHash
 
 #include <stdlib.h>
-#include <pHash.h>
 
 typedef unsigned long long ulong64;
 
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
 extern ulong64* pc_dct_videohash_Wrapper(const char *file, int *length);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
-extern double pc_dct_videohash_dist(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
+extern double ph_dct_videohash_dist(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
 */
 import "C"
 
@@ -49,7 +48,7 @@ func VideoHashDCT(file string, file2 string) (error) {
 	C.free(unsafe.Pointer(cs1))
 	println(*h1, len1)
 	
-	C.pc_dct_videohash_dist(h, len, h1, len1, 21)
+	C.ph_dct_videohash_dist(h, len, h1, len1, 21)
 	
 	return err
 }
