@@ -20,14 +20,14 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
     return hash;
 }
 
-int pc_dct_videohash_Wrapper(const char *file) {
+ulong64* pc_dct_videohash_Wrapper(const char *file) {
     cimg::exception_mode(0);
     int length;
 
     ulong64* t = ph_dct_videohash(file, length);
     errno = 0;
 
-    return length;
+    return t;
 }
 
 #ifdef __cplusplus
