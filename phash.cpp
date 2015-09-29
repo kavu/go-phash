@@ -24,8 +24,12 @@ ulong64 pc_dct_imagehash_Wrapper(const char *file) {
 ulong64* pc_dct_videohash_Wrapper(const char *file, int *length) {
     cimg::exception_mode(0);
     
-    ulong64* h = ph_dct_videohash(file, *length); 
-    errno = 0;
+    try {
+        ulong64* h = ph_dct_videohash(file, *length); 
+        errno = 0;
+    } catch (...) {
+       errno = 1;
+    }
     
     return h;
 }
