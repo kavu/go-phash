@@ -42,11 +42,12 @@ func VideoHashDCT(file string) (float64, error) {
 	h2 := (*[1<<30]C.ulonglong)(unsafe.Pointer(h))
 	
 	golen := int(len)
+	var a []int64
 	for i := 0; i < golen; i++ {
-		println(h2[i], golen)
+		a = append(a, int64(h2[i]))
 	}
 	
-	println(h2[0], golen)
+	println(a)
 	
 	return float64(0), err
 }
