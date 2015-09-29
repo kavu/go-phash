@@ -40,10 +40,13 @@ func VideoHashDCT(file string) (float64, error) {
 	h, err := C.pc_dct_videohash_Wrapper(cs, (*C.int)(unsafe.Pointer(&len)))
 	C.free(unsafe.Pointer(cs))
 	h2 := (*[1<<30]C.int)(unsafe.Pointer(h))
-	for i := 0; i < len; i++ {
-		println(h2[i], len)
+	
+	golen := int(len)
+	for i := 0; i < golen; i++ {
+		println(h2[i], golen)
 	}
-	println(h2[0], len)
+	
+	println(h2[0], golen)
 	
 	return float64(0), err
 }
