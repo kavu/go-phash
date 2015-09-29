@@ -26,10 +26,11 @@ ulong64* pc_dct_videohash_Wrapper(const char *file, int *length) {
     ulong64* h = NULL;
     try {
         h = ph_dct_videohash(file, *length); 
-        errno = 0;
+        
     } catch (...) {
-       errno = 1;
+       
     }
+    errno = 0;
     
     return h;
 }
