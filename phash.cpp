@@ -30,7 +30,7 @@ ulong64* pc_dct_videohash_Wrapper(const char *file, int *length) {
     
     for (int i = 0; i < *length; i++) 		
         printf("pointer: %llu\n", *(h+i));
-    printf("length after: %i\n", len;
+    printf("length after: %i\n", length);
     
     return h;
 }
