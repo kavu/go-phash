@@ -33,7 +33,7 @@ func ImageHashDCT(file string) (uint64, error) {
 	return uint64(h), err
 }
 
-func VideoHashDCT(file string) ([]int64, error) {
+func VideoHashDCT(file string) ([]uint64, error) {
 	cs := C.CString(file)
 	len := C.int(0)
 
@@ -42,9 +42,9 @@ func VideoHashDCT(file string) ([]int64, error) {
 	h2 := (*[1<<30]C.ulonglong)(unsafe.Pointer(h))
 	
 	golen := int(len)
-	var a []int64
+	var a []uint64
 	for i := 0; i < golen; i++ {
-		a = append(a, int64(h2[i]))
+		a = append(a, uint64(h2[i]))
 	}
 	
 	return a, err
