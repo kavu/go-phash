@@ -34,25 +34,15 @@ func ImageHashDCT(file string) (uint64, error) {
 	return uint64(h), err
 }
 
-func VideoHashDCT(file string, file2 string) (float64, error) {
+func VideoHashDCT(file string) (float64, error) {
 	cs := C.CString(file)
 	len := C.int(0)
 
 	h, err := C.pc_dct_videohash_Wrapper(cs, (*C.int)(unsafe.Pointer(&len)))
 	C.free(unsafe.Pointer(cs))
-	println(*h, len)
+	println((*h)[0], len)
 	
-	cs1 := C.CString(file2)
-	len1 := C.int(0)
-
-	h1, err := C.pc_dct_videohash_Wrapper(cs1, (*C.int)(unsafe.Pointer(&len1)))
-	C.free(unsafe.Pointer(cs1))
-	println(*h1, len1)
-	
-	d, err := C.ph_dct_videohash_dist(h, len, h1, len1, 21)
-	println(strconv.FormatFloat(float64(d), 'f', 6, 64))
-	
-	return float64(d), err
+	return float64(0), err
 }
 
 // HammingDistanceForHashes returns a Hamming Distance between two images' DCT pHashes.
