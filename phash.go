@@ -22,7 +22,6 @@ extern double ph_dct_videohash_dist(ulong64 *hashA, int N1, ulong64 *hashB, int 
 import "C"
 
 import "unsafe"
-import "strconv"
 
 // ImageHash returns a DCT pHash for image with a given path.
 func ImageHashDCT(file string) (uint64, error) {
@@ -40,7 +39,7 @@ func VideoHashDCT(file string) (float64, error) {
 
 	h, err := C.pc_dct_videohash_Wrapper(cs, (*C.int)(unsafe.Pointer(&len)))
 	C.free(unsafe.Pointer(cs))
-	println((*h)[0], len)
+	println(h[0], len)
 	
 	return float64(0), err
 }
