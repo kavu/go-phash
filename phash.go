@@ -47,7 +47,6 @@ func VideoHashDCT(file string) ([]uint64, error) {
 		a = append(a, uint64(h2[i]))
 	}
 	C.free(unsafe.Pointer(h))
-	C.free(unsafe.Pointer(h2))
 	
 	return a, err
 }
