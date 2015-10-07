@@ -52,7 +52,7 @@ func VideoHashDCT(file string) ([]uint64, error) {
 }
 
 func HammingDistanceForVideoHashes(hashA []uint64, hashB []uint64) (float64, error) {
-	distance, err := C.ph_dct_videohash_dist((*C.ulong64)(unsafe.Pointer(&hashA[0])), C.int(len(hashA)), (*C.ulong64)(unsafe.Pointer(&hashB[0])), C.int(len(hashB)), 21)
+	distance, err := C.ph_dct_videohash_dist((*C.ulong64)(unsafe.Pointer(&hashA[0])), C.int(len(hashA)), (*C.ulong64)(unsafe.Pointer(&hashB[0])), C.int(len(hashB)), 35)
 
 	return float64(distance), err
 }
