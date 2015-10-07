@@ -39,16 +39,22 @@ func VideoHashDCT(file string) ([]uint64, error) {
 
 	h, err := C.pc_dct_videohash_Wrapper(cs, (*C.int)(unsafe.Pointer(&len)))
 	C.free(unsafe.Pointer(cs))
-	h2 := (*[1<<30]C.ulonglong)(unsafe.Pointer(h))
-	
+	h2 := (*[1 << 30]C.ulonglong)(unsafe.Pointer(h))
+
 	golen := int(len)
 	var a []uint64
 	for i := 0; i < golen; i++ {
 		a = append(a, uint64(h2[i]))
 	}
 	C.free(unsafe.Pointer(h))
-	
+
 	return a, err
+}
+
+func HammingDistanceForVideoHashes(hashA []uint64, hashB []uint64) {
+	distance := C.ph_dct_videohash_dist(unsafe.Pointer(&hashA[0]), len(hashA), unsafe.Pointer(&hashB[0]), len(hashB), 21)
+
+	return float64(distance)
 }
 
 // HammingDistanceForHashes returns a Hamming Distance between two images' DCT pHashes.
