@@ -1,3 +1,6 @@
+# Warning! Original pHash library is unmaintained. Many users face build problems with it and this wrapper. You have been warned. 
+
+
 # go-phash #
 
 [![Build Status](https://travis-ci.org/kavu/go-phash.png?branch=master)](https://travis-ci.org/kavu/go-phash)
