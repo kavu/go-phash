@@ -15,7 +15,9 @@ package phash
 typedef unsigned long long ulong64;
 
 extern ulong64 pc_dct_imagehash_Wrapper(const char *file);
+extern ulong64* pc_dct_videohash_Wrapper(const char *file, int *length);
 extern int ph_hamming_distance(ulong64 hasha, ulong64 hashb);
+extern double ph_dct_videohash_dist(ulong64 *hashA, int N1, ulong64 *hashB, int N2, int threshold);
 */
 import "C"
 
@@ -29,6 +31,30 @@ func ImageHashDCT(file string) (uint64, error) {
 	C.free(unsafe.Pointer(cs))
 
 	return uint64(h), err
+}
+
+func VideoHashDCT(file string) ([]uint64, error) {
+	cs := C.CString(file)
+	len := C.int(0)
+
+	h, err := C.pc_dct_videohash_Wrapper(cs, (*C.int)(unsafe.Pointer(&len)))
+	C.free(unsafe.Pointer(cs))
+	h2 := (*[1 << 30]C.ulonglong)(unsafe.Pointer(h))
+
+	golen := int(len)
+	var a []uint64
+	for i := 0; i < golen; i++ {
+		a = append(a, uint64(h2[i]))
+	}
+	C.free(unsafe.Pointer(h))
+
+	return a, err
+}
+
+func HammingDistanceForVideoHashes(hashA []uint64, hashB []uint64, threshold int) (float64, error) {
+	distance, err := C.ph_dct_videohash_dist((*C.ulong64)(unsafe.Pointer(&hashA[0])), C.int(len(hashA)), (*C.ulong64)(unsafe.Pointer(&hashB[0])), C.int(len(hashB)), C.int(threshold))
+
+	return float64(distance), err
 }
 
 // HammingDistanceForHashes returns a Hamming Distance between two images' DCT pHashes.
