@@ -15,8 +15,8 @@ os:
 
 before_install:
   - uname -a
-  - apt-get update
-  - apt-get install libphash0 libphash-dev
+  - sudo apt-get update
+  - sudo apt-get install libphash0 libphash-dev
 
 script:
   - sudo go test -v ./...
