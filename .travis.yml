@@ -12,7 +12,6 @@ go:
 
 os:
   - linux
-  - osx
 
 before_install:
   - uname -a
