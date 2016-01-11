@@ -19,8 +19,8 @@ before_install:
   - sudo apt-get install libphash0 libphash-dev
 
 script:
-  - sudo go test -v ./...
-  - sudo go test -v -benchmem -benchtime=5s -bench=.
+  - go test -v ./...
+  - go test -v -benchmem -benchtime=5s -bench=.
 
 matrix:
   allow_failures:
