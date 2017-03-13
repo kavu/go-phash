@@ -11,7 +11,7 @@ You can view documentation on [godoc.org](http://godoc.org/github.com/kavu/go-ph
 
 ## Example ##
 
-First of all, install **go-phash** as usual: `go get github.com/kavu/go-sigstats`.
+First of all, install **go-phash** as usual: `go get github.com/kavu/go-phash`.
 
 Now you can use **go-phash**:
 
