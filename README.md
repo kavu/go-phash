@@ -4,6 +4,7 @@
 # go-phash #
 
 [![Build Status](https://travis-ci.org/kavu/go-phash.png?branch=master)](https://travis-ci.org/kavu/go-phash)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkavu%2Fgo-phash.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkavu%2Fgo-phash?ref=badge_shield)
 
 **go-phash** is a simple [pHash](http://phash.org) wrapper library for the Go programming language.
 
@@ -25,3 +26,7 @@ func main() {
 	println(hash)
 }
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkavu%2Fgo-phash.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkavu%2Fgo-phash?ref=badge_large)
